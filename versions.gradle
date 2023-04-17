@@ -1,0 +1,12 @@
+//签名文件配置
+def build_key = [:]
+build_key.keystoreReleaseFilepath = "../keystore/databaker.keystore"
+build_key.keystoreDebugFilepath = "../keystore/databaker.keystore"
+build_key.keystoreAlias = "databaker"
+build_key.debugKeystoreAlias = "databaker"
+build_key.keystoreAliasPSW = "1234qwer"
+build_key.keystorePSW = "1234qwer"
+ext.build_key = build_key
+
+
+

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">声音转换插件</string>
+    <string name="agora_access_token" translatable="false"></string>
+    <string name="start_log">开启LOG</string>
+    <string name="close_log">关闭LOG</string>
+</resources>

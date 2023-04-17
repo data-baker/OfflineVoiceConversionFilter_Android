@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.offline.conversion'
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.offline.conversion"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    def releaseFile = file(build_key.keystoreReleaseFilepath)
+    def debugFile = file(build_key.keystoreDebugFilepath)
+    signingConfigs {
+        release {
+            storeFile releaseFile
+            keyAlias build_key.keystoreAlias
+            storePassword build_key.keystorePSW
+            keyPassword build_key.keystoreAliasPSW
+        }
+        beta {
+            storeFile debugFile
+            keyAlias build_key.debugKeystoreAlias
+            storePassword build_key.keystorePSW
+            keyPassword build_key.keystoreAliasPSW
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (releaseFile.exists()) {
+                println("WITH -> buildTypes -> release: using jks key")
+                signingConfig signingConfigs.release
+            } else {
+                println("WITH -> buildTypes -> release: using default key")
+            }
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (debugFile.exists()) {
+                println("WITH -> buildTypes -> debug: using jks key")
+                signingConfig signingConfigs.beta
+            } else {
+                println("WITH -> buildTypes -> debug: using default key")
+            }
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+
+    def agora_sdk_version = "4.0.0.test3"
+    implementation "io.agora.rtc:full-rtc-basic-special:${agora_sdk_version}"
+    implementation "io.agora.rtc:ains:${agora_sdk_version}"
+    implementation "io.agora.rtc:full-super-resolution:${agora_sdk_version}"
+    implementation "io.agora.rtc:full-virtual-background:${agora_sdk_version}"
+    implementation "io.agora.rtc:full-content-inspect:${agora_sdk_version}"
+    implementation "io.agora.rtc:full-screen-sharing:${agora_sdk_version}"
+    implementation "io.agora.rtc:spatial-audio:${agora_sdk_version}"
+    implementation "io.agora.rtc:audio-beauty:${agora_sdk_version}"
+    implementation "io.agora.rtc:screen-capture:${agora_sdk_version}"
+    implementation "io.agora.rtc:clear-vision:${agora_sdk_version}"
+    implementation "io.agora.rtc:pvc:${agora_sdk_version}"
+}

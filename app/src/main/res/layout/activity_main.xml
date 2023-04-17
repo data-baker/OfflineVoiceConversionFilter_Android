@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/fl_local"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
+
+            <FrameLayout
+                android:id="@+id/fl_remote"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
+
+        </LinearLayout>
+
+
+        <SeekBar
+            android:id="@+id/recordingVol"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_join"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="20dp">
+
+            <Button
+                android:id="@+id/btn_init"
+                android:layout_width="180dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_btn_generate"
+                android:text="初始化SDK" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_enable"
+                    android:layout_width="100dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="42dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_generate"
+                    android:text="开启插件" />
+
+                <Button
+                    android:id="@+id/btn_log"
+                    android:layout_width="100dp"
+                    android:layout_height="42dp"
+                    android:layout_marginHorizontal="42dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_generate"
+                    android:text="开启LOG" />
+
+            </LinearLayout>
+
+
+            <RadioGroup
+                android:id="@+id/rg_yinse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_luoli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:checked="true"
+                    android:text="萝莉" />
+
+                <RadioButton
+                    android:id="@+id/rb_dashu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:text="大叔" />
+
+                <RadioButton
+                    android:id="@+id/rb_kongling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:text="空灵" />
+
+                <RadioButton
+                    android:id="@+id/rb_bawanglong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:text="霸王龙" />
+
+                <RadioButton
+                    android:id="@+id/rb_zhongjinshu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@null"
+                    android:text="重金属" />
+
+
+            </RadioGroup>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_channel"
+                    android:layout_width="180dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_debug_input"
+                    android:hint="Channel Id"
+                    android:paddingHorizontal="12dp" />
+
+                <Button
+                    android:id="@+id/btn_join"
+                    android:layout_width="100dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="42dp"
+                    android:background="@drawable/bg_btn_generate"
+                    android:text="加入" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
